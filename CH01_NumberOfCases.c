@@ -1,17 +1,32 @@
-#include <stdio.h>
+#include<stdio.h>
 
-main() {
-    int a=500; //크림빵
-    int b=700; //새우깡
-    int c=400; //콜라
-    int i, j, k;
+const int BREAD=500;
+const int SNACK=700;
+const int DRINK=400;
 
-    for(i=1;i<5;i++)
-        for(j=1;j<5;j++)
-            for(k=1;j<6;j++) {
-                if(((a*i) + (b*i) + (c*i)) == 3500)
-                    printf("크림빵 %d개, 새우깡 %d개, 콜라 %d개 \n", i, j, k);
-            }
-    printf("어떻게 구매하시겠습니까?");
-    return 0;
+int main(void)
+{
+	int i, j, k;
+	int money;
+	printf("현재 당신이 소유하고 있는 금액 : ");
+	scanf("%d", &money);
+
+	for(i=1; i<money/BREAD; i++) //BREAD를 살 수 있는 최대 총량이 나온다.
+	{                            //1부터 시작 == 1이상 구매
+		for(j=1; j<money/SNACK; j++)
+		{
+			for(k=1; k<money/DRINK; k++)
+			{
+				if(money==BREAD*i+SNACK*j+DRINK*k)
+				{
+					printf("크림빵 %d개, ", i);
+					printf("새우깡 %d개, ", j);
+					printf("콜  라 %d개 \n", k);
+				}
+			}
+		}
+	}
+
+	printf("어떻게 구입하시겠습니까? \n");
+	return 0;
 }

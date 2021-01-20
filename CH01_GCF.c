@@ -1,21 +1,23 @@
-#include <stdio.h>
+#include<stdio.h>
 
-main() {
-    int a, b, c;
-    int temp;
-    int i;
+int GCM(int num1, int num2);
 
-    printf("최대 공약수를 위한 a, b 입력: ");
-    scanf("%d %d", &a, &b);
-    if(a<b) { // 둘 중의 작은 수를 찾음
-        temp=a;
-        a=b;
-        b=temp;
-    }
-    for(i=1;i<=a;i++)
-        if(!(a%i) && !(b%i)) //둘 다 나누어 떨어 뜨리면
-            c=i;
+int main(void)
+{
+	int num1, num2;
 
-    printf("%d, %d의 최대 공약수: %d ", a, b, c);
-    return 0;
+	printf("두 개의 정수 입력 : ");
+	scanf("%d %d", &num1, &num2);
+
+	printf("GCM : %d \n", GCM(num1, num2));
+	return 0;
+}
+
+int GCM(int num1, int num2) //기존 작성한 코드와 반대 논리
+{                           //위에서 부터 나눠 내려감
+	int result;
+	result=num1;
+	while(num1%result!=0 || num2%result!=0)
+		result--;
+	return result;
 }
