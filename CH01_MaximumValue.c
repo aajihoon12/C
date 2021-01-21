@@ -1,19 +1,24 @@
 #include <stdio.h>
 
-main() {
-    int n; //자연수 n
-    int k=0;
-    int num=1;
+int main(void)
+{	
+	int n, k;
+	int inc=1;
 
-    printf("2(의 제급k)<=n을 만족할 자연수 n : ");
-    scanf("%d", &n);
-
-    while(1) {
-        if(num<=n) { //k가 하나 증가할 때마다, num은 2씩 곱해진다.
-            k++;
-            num*=2;
-        }else   
-            break;
-    }
-    printf("k: %d", k-1);
+	printf("상수 n 입력 : ");
+	scanf("%d", &n);
+	
+	if(n==0)
+	{
+		printf("만족하는 k 없음 \n");
+		return 0;
+	}
+	
+	for(k=0; inc*2<=n ; k++)
+	{
+		inc=inc*2;
+	}
+    //k-1이 되어야 하지 않나요?
+	printf("공식을 만족하는 k : %d \n", k);	
+	return 0;;
 }

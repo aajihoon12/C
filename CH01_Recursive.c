@@ -1,16 +1,19 @@
 #include <stdio.h>
 
-int Recursive(int n) {
-    if(n==0)
-        return 1;
-
-    return 2 * Recursive(n-1);
+int Power(int n)
+{
+	if(n==0)
+		return 1;
+	return Power(n-1)*2;
 }
 
-main() {
-    int n;
+int main(void)
+{	
+	int num;
 
-    printf("2ÀÇ Áö¼ö: ");   scanf("%d", &n); 
-    printf("2ÀÇ n½Â: %d", Recursive(n));
-    return 0;
+	printf("?? ?? : ");
+	scanf("%d", &num);
+
+	printf("2? %d?? %d \n", num, Power(num));
+	return 0;;
 }
