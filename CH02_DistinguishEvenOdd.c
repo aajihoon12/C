@@ -6,7 +6,7 @@ void PrintOdd(int *arr);
 main() {
     int i;
     int arr[10];
-
+    //무작위 정수 10개 입력
     printf("총 10개의 숫자 입력: \n");
     for(i=0;i<sizeof(arr)/sizeof(int);i++) {
         printf("입력: ");

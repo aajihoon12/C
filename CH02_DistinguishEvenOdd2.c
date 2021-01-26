@@ -3,7 +3,7 @@
 main() {
     int arr[10];
     int num;
-    //int cnt1 = 0, cnt2 = 10;
+    //int front = 0, back = 10;
     int i;
 
     for(i=0;i<10;i++) {

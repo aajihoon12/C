@@ -4,8 +4,8 @@
 int IsPalindrome(char * arr);
 
 main() {
-    char arr[50];
-
+    char arr[50]; //입력을 받을 명확한 공간
+                //포인터는 주소 메모리를 가리킬 뿐
     printf("단어 입력: ");
     scanf("%s", arr);
     if(IsPalindrome(arr))
