@@ -1,44 +1,49 @@
-#include <stdio.h>
+#include<stdio.h> 
 
-//void MakeArrayOfSnail(int arr[][]); //MakeAnArrayOfSnail-shaped .. 아 2차원 배열은 유연하지 않구나
+/*
+   이 문제와 관한한 다양한 답이 존재합니다.
+   아래의 코드는 상대적으로 초보자가 이해하기 쉬운 코드라고 생각하여 답안으로 보여드립니다.
+*/
 
-main() {
-    int arr[50][50];
-    int n, repo;
-    int row=0, col=-1;
-    int ict=1;
-    int num=0;
-    int i=0, j=0;
+int main(void)
+{
+    int arr[50][50]; 
+    int len, idx, i, j; 
+    int s=0, w=-1, inc=1, val=0; 
 
-    printf("숫자를 입력하시오: "); scanf("%d", &n);
-    repo=n;
+    printf("숫자를 입력하시오: ");
+    scanf("%d", &len); 
+    idx=len;
 
-    while(1) {
-        if(num==n*n)
-            break;
-        i=0;
-        while(i<n) {
-            num++;
-            col+=ict;
-            arr[row][col]=num;
+    while(1) 
+	{
+        for(i=0; i<idx;i++) // 가로 단위 그림 
+		{
+            val++; 
+            w=w+inc; 
+            arr[s][w]=val;
         }
-        n--;
-        i=0;
-        while(i<n) {
-            num++;
-            row+=ict;
-            arr[row][col]=num;
+        idx=idx-1; 
+
+        if(val==len*len) 
+			break; 
+
+        for(i=0; i<idx; i++) // 세로 단위 그림
+		{ 
+            val++; 
+            s=s+inc; 
+            arr[s][w]=val; 
         }
-        ict*=-1;
+        inc=inc*-1;
     }
-    i=0;
-    while(i<repo) {
-        while(j<repo) {
-            printf("%d", arr[i][j]);
-            j++;
-        }
+
+    for(i=0; i<len; i++)  // 달팽이 배열 출력.  
+	{ 
+		for(j=0; j<len; j++) 
+            printf("%5d", arr[i][j]); 
         printf("\n");
-        i++;
-    }
-    return 0;
+    } 
+
+	return 0;
 }
+
