@@ -32,4 +32,13 @@ void ShowAllInfo(BH* bh) {
         ShowBookInfo(bh->arr[i]);
 }
 
+void DestroyMemory(BH* bh) {
+    int i=(bh->idx);
+
+    while(i>0){
+        i--;
+        free(bh->arr[i]);
+    }
+}
+
 #endif

@@ -10,5 +10,6 @@ main() {
         i--;
     }
     ShowAllInfo(&bh);
+    DestroyMemory(&bh);
     return 0;
 }
