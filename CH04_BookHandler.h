@@ -21,7 +21,7 @@ void BHInsert(BH * bh) {
     BookPtr book;
 
     book=(Book*)malloc(sizeof(Book));
-    BookInit(book); BInsert(book);
+    BInsert(book);
     bh->arr[bh->idx++]=book;
 }
 
