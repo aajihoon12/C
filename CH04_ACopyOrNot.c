@@ -1,60 +1,118 @@
 #include <stdio.h>
+#include <string.h>
 
-int IsTheSame(int r1, int r2, char * arr1, char * arr2);
+const int SAME=1;
+const int DIFF=2;
 
-main() {
-    FILE * fp1;
-    FILE * fp2;
-    char arr1[20];
-    char arr2[20];
-    int readcnt1, readcnt2;
+int main(int argc, char *argv[])
+{
+	FILE *sorc1;
+	FILE *sorc2;
 
-    fp1=fopen("","rb");
-    fp2=fpoen("","rb");
+	char str1[100], str2[100];
+	int state1, state2;
+	int flag=SAME;    // same or diff
+	
+	if(argc!=3) 
+	{
+		puts("usage : comp sorurce1 source2 \n");
+		return 1;
+	}
 
-    while(1) {
-        readcnt1=fread((void*)arr1, 1, sizeof(arr1), fp1);
-        readcnt2=fread((void*)arr2, 1, sizeof(arr2), fp2);
+	/* 파일의 개방 */
+	sorc1=fopen(argv[1], "rt");
+	sorc2=fopen(argv[2], "rt");	
+	if(sorc1==NULL || sorc2==NULL)
+	{
+		printf("file open error!\n");
+		return 1;
+	}
 
-        if(readcnt1<sizeof(arr1)) {
-            if(feof(fp1)!=0) {
-                if(IsTheSame(readcnt1, readcnt2, arr1, arr2)!=1) {
-                    printf("Not a Copy \n");
-                    fclose(fp1);
-                    fclose(fp2);
-                    return 0;
-                }
-                break;
+	/* FILE COMPARE */
+	while(1)
+	{
+		if(feof(sorc1)!=0 && feof(sorc2)!=0)
+			break;
+		fgets(str1, sizeof(str1), sorc1);
+		fgets(str2, sizeof(str2), sorc2);
+		if(strcmp(str1, str2)!=0)
+		{
+			flag=DIFF;
+			break;
+		}
+	}
 
-            }else {
-                printf("error! \n");
-                return -1;
-            }
-        }
-
-        if(IsTheSame(readcnt1, readcnt2, arr1, arr2)!=1) {
-            printf("Not a Copy \n");
-            fclose(fp1);
-            fclose(fp2);
-            return 0;
-        }
-    }
-    fclose(fp1);
-    fclose(fp2);
-    printf("2개의 파일은 완전히 일치합니다. \n");
-    return 0;
+	if(flag==SAME)
+		fputs("두 개의 파일은 완전히 일치 합니다.", stdout);
+	else
+		fputs("두 개의 파일은 불일치 합니다.", stdout);
+	
+	/* 파일의 종결 */
+	state1=fclose(sorc1);
+	state2=fclose(sorc2);
+	if(state1!=0||state2!=0)
+	{
+		printf("file close error!\n");
+		return 1;
+	}
+	return 0;
 }
+#include <stdio.h>
+#include <string.h>
 
-int IsTheSame(int r1, int r2, char * arr1, char * arr2){ 
-    int i=r1;
+const int SAME=1;
+const int DIFF=2;
 
-    if(r1!=r2)
-        return 0;
+int main(int argc, char *argv[])
+{
+	FILE *sorc1;
+	FILE *sorc2;
 
-    while(i>0) {
-        i--;
-        if(arr1[i]!=arr2[i])
-            return 0;
-    }
-    return 1;
+	char str1[100], str2[100];
+	int state1, state2;
+	int flag=SAME;    // same or diff
+	
+	if(argc!=3) 
+	{
+		puts("usage : comp sorurce1 source2 \n");
+		return 1;
+	}
+
+	/* 파일의 개방 */
+	sorc1=fopen(argv[1], "rt");
+	sorc2=fopen(argv[2], "rt");	
+	if(sorc1==NULL || sorc2==NULL)
+	{
+		printf("file open error!\n");
+		return 1;
+	}
+
+	/* FILE COMPARE */
+	while(1)
+	{
+		if(feof(sorc1)!=0 && feof(sorc2)!=0)
+			break;
+		fgets(str1, sizeof(str1), sorc1);
+		fgets(str2, sizeof(str2), sorc2);
+		if(strcmp(str1, str2)!=0)
+		{
+			flag=DIFF;
+			break;
+		}
+	}
+
+	if(flag==SAME)
+		fputs("두 개의 파일은 완전히 일치 합니다.", stdout);
+	else
+		fputs("두 개의 파일은 불일치 합니다.", stdout);
+	
+	/* 파일의 종결 */
+	state1=fclose(sorc1);
+	state2=fclose(sorc2);
+	if(state1!=0||state2!=0)
+	{
+		printf("file close error!\n");
+		return 1;
+	}
+	return 0;
 }
