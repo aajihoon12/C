@@ -22,6 +22,7 @@ void PHInsert(PHandler * PH) {
     PH->arr[PH->idx++] = ph;
 }
 
+/*
 int PHCompareW(char * ph1, char * ph2) {
     int i=0;
 
@@ -34,8 +35,9 @@ int PHCompareW(char * ph1, char * ph2) {
     }
     return 1;
 }
+*/
 
-phPtr PHSearch(PHandler * PH) {
+int PHSearch(PHandler * PH) {
     int i=0;
     char number[20];
 
@@ -43,7 +45,7 @@ phPtr PHSearch(PHandler * PH) {
     printf("Phone Number : "); scanf("%s", number);   
 
     while(i<PH->idx) {
-        if(PHCompareW(PH->arr[i], number) == 1) {
+        if(strcmp(PH->arr[i]->number, number) == 0) {
             ShowPH(PH->arr);
             printf("\n");
             return i;
@@ -60,10 +62,14 @@ void PHDelete(PHandler * PH) {
 
     if(idx=PHSearch(PH))
         free(PH->arr[idx]);
-
+    else{
+        printf("적합한 대상을 찾지 못했습니다. \n\n");
+        return;
+    }
+    
     i=idx;
-    while(i<(PH->idx)-2) {
-        PH->arr[i]=PH->arr[i+1];
+    while(i+1<PH->idx) { //배열 이해 부족
+        PH->arr[i-1]=PH->arr[i];
     }
     PH->idx--;
 }
@@ -86,7 +92,7 @@ void PHFree(PHandler * PH) {
     }
 }
 
-void SaveToF(PHandler * PH) {
+int SaveToF(PHandler * PH) {
     FILE * fp;
     int i=0;
     int writeCnt;
@@ -107,7 +113,7 @@ void SaveToF(PHandler * PH) {
     fclose(fp);
 }
 
-void LoadToP(PHandler * PH) {
+int LoadToP(PHandler * PH) {
     FILE * fp;
     int i=0;
     int readCnt;

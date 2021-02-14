@@ -3,9 +3,12 @@
 
 #include <stdio.h>
 
+#define NAME_LEN 20
+#define NUMBER_LEN 20
+
 typedef struct {
-    char name[10];
-    char number[20];
+    char name[NAME_LEN];
+    char number[NUMBER_LEN];
 }Phone;
 
 
