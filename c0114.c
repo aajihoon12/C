@@ -82,9 +82,9 @@ void PrintPurList(char goods[][LEN], int * price, int idx) {
 
     printf("[ 구매한 제품 목록 ] \n");
     while(i<idx)
-        printf("%d. %9s  6%d", goods[i], price[i++]);
+        printf("%d. %9s  6%d \n", i+1, goods[i], price[i++]);
 
-    printf("총 가격: %d \n", value);
+    printf("-총 가격: %d \n", value);
 }
 
 float DiscountByValue(int * value) {
