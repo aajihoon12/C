@@ -29,7 +29,7 @@ main(){
     }
     
     winner=IsTargetScore(tot_score, personnel);
-    printf("***Final Winner: %d(%d) *** \n", winner, tot_score[winner-1]);
+    printf("***Final Winner: %d(%d) User *** \n", winner, tot_score[winner-1]);
     PrintUsersFScore(tot_score, personnel);
 
     return 0;
