@@ -3,7 +3,7 @@
 
 main() {
     char * words[] = {"messi","xabi","iniesta","busquets","alves"};
-    char alpabets[] = {"abcdefghijklmnopqrstuvwxyz"}; //26
+    char alpabets[] = {"abcdefghijklmnopqrstuvwxyz"}; //27
     char * underscore; //밑줄
     int words_idx; // 단어 선택 idx
     int idx; // (word & 밑줄 배열)의 전체 길이값
@@ -44,5 +44,6 @@ main() {
     }
     
     printf("GAME OVER \n");
+    free(underscore);
     return 0;
 }

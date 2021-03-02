@@ -13,12 +13,12 @@ int RandomIndex() { // 0~4 사이의 임의의 값 발생 후 반환
 
 void MakeUnderscore(char * underscore, int idx) { //받은 인덱스만큼 배열 생성 후 '-' 기호 input 
     int i=0;
-    underscore=(char *)malloc(1*idx+1); // 단어의 길이와 동일하게 힙에서 char 배열 할당, 다만 배열과 문자열의 null문자 처리를 잘몰라 여분으로 +1공간 추가 
+    underscore=(char *)malloc((1*idx)+1); // 단어의 길이와 동일하게 힙에서 char 배열 할당, 다만 배열과 문자열의 null문자 처리를 잘몰라 여분으로 +1공간 추가 
                                         // 더나아가서 underscore[idx+1]='/0'(널문자)해줘야 할까..?
     while(i<idx)//단어의 길이와 동일하게 '_' 문자 입력
         underscore[i++]='_';
 
-    underscore[idx+1]='/0';  
+    underscore[idx+1]='/0';    
 }
 
 int CompareUserInput(char * underscore, char * word, int len, char user) { //유저가 입력한 단어와 배열을 비교 및 처리
@@ -41,10 +41,10 @@ int CompareUnderWord(char * underscore, char * word, int idx) {
     int i=0;
 
     while(i<idx) {
-        if(underscore[i] != word[i])
-            return 0;
+        if(underscore[i] != word[i]) //밑줄과 배열(인덱스가 같음)을 비교해서
+            return 0;                //다른 부분이 하나라도 있다면, false반환
     }
-    return 1;
+    return 1; //모두 같다면 true반환
 }
 
 void ChangeUnderScore(char * underscore, char * word, int idx) { //user가 맞춘 입력값에 대해 배열 값을 변화
